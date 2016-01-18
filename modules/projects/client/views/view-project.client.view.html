@@ -1,0 +1,44 @@
+<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-4">
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+          <h3 data-ng-bind="project.title" style="margin-top: 0;"></h3>
+
+          <small>
+            <em class="text-muted">
+              Created on
+              <span data-ng-bind="project.created | date:'mediumDate'"></span>
+              by
+              <span data-ng-bind="project.user.displayName"></span>
+            </em>
+          </small>
+          <img src="http://placehold.it/300x200" style="display:block; width: 100%"/>
+          <br/>
+          <p class="lead" data-ng-bind="project.description"></p>
+          <div class="pull-left" data-ng-show="authentication.user._id == project.user._id">
+            <a class="btn btn-primary" data-ui-sref="projects.edit({projectSlug: project.slug})">
+              <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-primary" data-ng-click="remove();">
+              <i class="glyphicon glyphicon-trash"></i>
+            </a>
+          </div>
+          <div class="pull-right" >
+            {{error}}
+
+            <span>{{project.amount | currency}}</span>
+            <a class="btn btn-primary" data-ng-click="addToCart(project._id, project.title, project.amount);">
+              <i class="glyphicon glyphicon-plus"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,64 @@
+<section data-ng-controller="HomeController">
+		<div class="jumbotron text-center">
+				<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+						</div>
+				</div>
+				<br>
+				<div class="row">
+						<p class="lead">
+								Hi{{ authentication.user ? ' ' + authentication.user.firstName : ''}}! Welcome to my Donation App
+						</p>
+				</div>
+				<div class="row">
+						<p>
+								<a class="btn btn-primary btn-lg" data-ui-sref="projects.list" target="_blank">View Projects</a><span
+														data-ng-if="!authentication.user"> Or
+        <a class="btn btn-primary btn-lg" data-ui-sref="authentication.signup">Sign Up</a> to add Projects</span>
+						</p>
+				</div>
+		</div>
+		<div>
+				<h2 class="text-center">A simple MEAN.JS Donation app</h2>
+
+				<p>This app is a crude port of a WordPress/AngularJS Donation App I created for a charity I work with. The full live
+						app can be found here <a href="http://muntadaaid.org/donate">Donate App</a>. As this app is mainly practice to
+						keep my skills sharp, it currently lacks most of the features found in the live version. I truly love the MEAN
+						stack and in particular AngularJS</p>
+
+				<p>This application tracks users and projects.</p>
+				<ul>
+						<li>View projects or click <em><a ui-sref="athenication.signup">Signup</a></em> to get started.
+						</li>
+
+						<li>
+								Add new projects.
+						</li>
+						<li>
+								Have fun...
+						</li>
+				</ul>
+		</div>
+
+		<h3>Quick notes regarding the WordPress back-ended version</h3>
+
+		<p>The WordPress/AngularJS version was originally connected using WP-API however due to the slow server the site is hosted on, I decided to disconnect it from the API end point and instead fed the data directly into the page.  </p>
+		<p>This version currently missing these features</p>
+		<ul>
+				<li>Search</li>
+				<li>Routed categories</li>
+				<li>Tabbed progress navigation</li>
+				<li>Multiple donations</li>
+				<li>Individual packages per project</li>
+				<li>Better communication (selected items highlighted, better errors)</li>
+				<li>Order details page</li>
+				<li>Confirmation page</li>
+				<li>Add/Change project image</li>
+				<li>Auto redirect categories with single project</li>
+		</ul>
+		<p>Although I have the greatest of intentions to have both versions reach parity, I'll doubtfully have the time. If anyone wants help on how I implemented the above features, let me know and I'll try getting it added. I of course encourage anyone else to continue and help out :-)</p>
+
+		<br/>
+		<br/><p class="small">codelero, dude in love with MEAN.JS</p>
+
+</section>

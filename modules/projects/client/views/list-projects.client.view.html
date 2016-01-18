@@ -1,0 +1,71 @@
+<section data-ng-controller="ProjectsController" data-ng-init="find()">
+
+		<script type="text/ng-template" id="group-template.html">
+
+				<div class="panel panel-default">
+						<div class="panel-heading" style="padding: 0">
+
+						<a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading" >
+
+								<h4 class="panel-title" style="padding: 10px 15px">
+										<span>{{heading}}</span>
+								</h4>
+						</a>
+						</div>
+
+						<div class="panel-collapse collapse" collapse="!isOpen">
+								<div ng-transclude></div>
+						</div>
+				</div>
+		</script>
+
+		<div class="page-header">
+				<h1>Projects</h1>
+		</div>
+
+		<div class="row">
+				<div class="col-sm-3">
+						<accordion close-others="true">
+								<accordion-group data-ng-repeat="(categoryName, projects) in categories"
+								                 is-open="status.open"
+								                 ng-click="setCurrentCategory(categoryName)"
+								                 template-url="group-template.html">
+										<accordion-heading>
+												{{categoryName}} <i class="pull-right glyphicon"
+												                    ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+										</accordion-heading>
+										<div class="">
+												<a data-ng-repeat="project in projects" data-ui-sref="projects.view({projectSlug: project.slug})"
+												   class="list-group-item">{{project.title}}</a>
+										</div>
+
+
+								</accordion-group>
+						</accordion>
+				</div>
+				<div class="col-sm-9">
+						<div class="row">
+								<div class="container-fluid">
+										<a data-ng-repeat="project in projects   | filter:{ category: currentCatergory }"
+										   data-ui-sref="projects.view({projectSlug: project.slug})"
+										   class="col-sm-4 project">
+												<div class="panel panel-default">
+														<div class="panel-heading text-center">
+																{{project.title}}
+														</div>
+														<div class="panel-body">
+																<img src="http://placehold.it/300x200"/>
+														</div>
+												</div>
+
+										</a>
+								</div>
+						</div>
+				</div>
+		</div>
+
+
+		<div class="alert alert-warning text-center" data-ng-if="projects.$resolved && !projects.length">
+				No projects yet, why don't you <a data-ui-sref="projects.create">create one</a>?
+		</div>
+</section>
